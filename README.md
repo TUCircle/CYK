@@ -18,3 +18,5 @@ This means:
 - A -> BB | b
 - B -> CA | a
 - C -> AC | a
+
+- If you want you can change the last line `drawLaTeX()` to `draw()` to draw a table inside the console without the special LaTeX syntax.
