@@ -115,7 +115,7 @@ args = parser.parse_args()
 word = args.word
 lw1 = len(word)+1
 try:
-  from config import all
+  from config import *
 except ImportError:
   print('No config,py..')
   exit(1)
