@@ -1,3 +1,38 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+# cyk.py - Cocke-Younger-Kasami implementation in python
+# 
+# Copyright (c) 2014 by 
+# Ole Kroeger <echo by5rcm9lZ2VyQHdpa3VuaWEuZGUK | base64 -d>
+# Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/
+#
+#====================================================================== 
+# Author: Ole Kroeger
+# Email : echo by5rcm9lZ2VyQHdpa3VuaWEuZGUK | base64 -d
+# Github: www.github.com/Wikunia
+#
+# Author: Christian Rebischke
+# Email : echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d
+# Github: www.github.com/Shibumi
+#
+# vim: set ts=2 sts=2 sw=2 et
+#
+
+import argparse
+
 def firstRowNCol():
 	# first row
 	for c in range(1,lw1):
@@ -71,12 +106,25 @@ def drawLaTeX():
 		print(row + '   \\\\ \hline') 
 	print('\end{tabular}')
 		
-word = 'baaba'
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("word", help='Your word that you wish to test')
+parser.add_argument("--latex", help="draw output in LateX", action="store_true")
+args = parser.parse_args()
+word = args.word
 lw1 = len(word)+1
-rules = {'S': ['AB','CA'],'A': ['BB','b'], 'B': ['CA','a'], 'C': ['AC','a']}
+try:
+  from config import all
+except importError:
+  print('No config,py..')
+  exit(1)
 width = len(rules)*2+2
 table = [[['-'] for x in range(lw1)] for x in range(lw1)] 
 firstRowNCol()
 diagonal()
 combine()
-drawLaTeX()   
+if args.latex:
+  drawLaTeX()
+else:
+  draw()
