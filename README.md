@@ -6,17 +6,8 @@ Create a CYK table for a special word and rules.
 ## How to use
 
 - Install [Python](https://www.python.org/). 
-- Start the programm with `python cyk.py`. 
-- You will see a LaTeX table inside your console.
-- Now you want to change the word and the rules which you have to do in the cyk.py file.
-- `word = 'baaba'` -> here you can add your word.
+- Start the programm with `python cyk.py "abba"`. 
+- You will see a table inside your console for the word `"abba"` and the given rules inside the `config.py` file.
+- If you want to change the rules you need to change the `config.py` file which is in the same directory.
 - `rules = {'S': ['AB','CA'],'A': ['BB','b'], 'B': ['CA','a'], 'C': ['AC','a']}` 
-
-This means:
-
-- S -> AB | CA
-- A -> BB | b
-- B -> CA | a
-- C -> AC | a
-
-- If you want you can change the last line `drawLaTeX()` to `draw()` to draw a table inside the console without the special LaTeX syntax.
+- If you want you can print the table as a latex table with `python cyk.py "abba" --latex`
