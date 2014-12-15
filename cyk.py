@@ -44,7 +44,11 @@ def firstRowNCol():
 def diagonal():
 	for i in range(1,lw1):
 		char = word[i-1]
-		table[i][i] = findRules(char)
+		rules = findRules(char)
+		if len(rules) == 0:
+			print("It isn't possible to create a '"+char+"' with the given rules.")
+			exit(1)
+		table[i][i] = rules
 		
 def findRules(endString):
 	starts = []
@@ -117,7 +121,7 @@ lw1 = len(word)+1
 try:
   from config import *
 except ImportError:
-  print('No config,py..')
+  print('No config.py')
   exit(1)
 width = len(rules)*2+2
 table = [[['-'] for x in range(lw1)] for x in range(lw1)] 
