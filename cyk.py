@@ -116,7 +116,7 @@ word = args.word
 lw1 = len(word)+1
 try:
   from config import all
-except importError:
+except ImportError:
   print('No config,py..')
   exit(1)
 width = len(rules)*2+2
